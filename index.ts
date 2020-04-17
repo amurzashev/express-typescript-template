@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './swagger';
 
+const PORT = process.env.PORT || 5000;
+
 const app = express();
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -15,6 +17,6 @@ app.get('*', (_req, res) => {
   res.redirect('/api-docs');
 });
 
-app.listen(5000, () => {
-  console.log('server is running on port 5000');
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
 });
